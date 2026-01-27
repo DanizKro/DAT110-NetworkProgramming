@@ -13,33 +13,30 @@ public class MessageUtils {
 
 	public static byte[] encapsulate(Message message) {
 		
-		byte[] segment = null;
-		byte[] data;
+		byte[] segment = new byte[SEGMENTSIZE]; //pakken som skal sendes
+		byte[] data = message.getData(); //inneholde i pakken
 		
-		// TODO - START
 		
 		// encapulate/encode the payload data of the message and form a segment
 		// according to the segment format for the messaging layer
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-			
-		// TODO - END
+		segment[0] = (byte) data.length; //vi setter på en header
+		System.arraycopy(data, 0, segment, 1, data.length); //definerer pakken på 128 bytes
+		
 		return segment;
 		
 	}
 
 	public static Message decapsulate(byte[] segment) {
 
-		Message message = null;
 		
-		// TODO - START
+		int length = segment[0]; //henter headeren og lagrer den som "length" 
+		
 		// decapsulate segment and put received payload data into a message
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
 		
-		// TODO - END
+		byte[] data = Arrays.copyOfRange(segment, 1, 1 + length); //definerer inneholdet i pakken, lengden på relevant data (alt utenom padding)
+		Message message = new Message(data); //setter inneholdet i pakken inn i et Message-objekt
 		
 		return message;
 		

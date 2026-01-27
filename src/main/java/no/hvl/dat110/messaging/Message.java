@@ -10,12 +10,22 @@ public class Message {
 	// construction a Message with the data provided
 	public Message(byte[] data) {
 		
-		// TODO - START
+		// TODO - START // konstruktør som passer på at pakken ikke er tom eller for lang. 
+		if (data == null) {
+			throw new UnsupportedOperationException(TODO.constructor(
+					"Message data cannot be null"));
+		}
+		if (data.length > 127) {
+			throw new UnsupportedOperationException(TODO.constructor(
+					"Message data cannot be longer than 127 bytes"));
+		}
 		
+		/*
 		if (true)
 			throw new UnsupportedOperationException(TODO.constructor("Message"));
+			*/
 			
-		// TODO - END
+		this.data = data;
 	}
 
 	public byte[] getData() {
