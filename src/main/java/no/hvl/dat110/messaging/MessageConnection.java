@@ -37,6 +37,16 @@ public class MessageConnection {
 		byte[] data;
 		
 		// TODO - START
+							// Skrevet selv start!!	
+		try {
+			data = MessageUtils.encapsulate(message); //gjør meldingen om til et segment via metoden. 
+			outStream.write(data); //sender pakken
+		} catch (IOException e) {
+			System.out.println("Send: " + e.getMessage());
+			e.printStackTrace();
+		}
+							// Skrevet selv slutt!!	
+		
 		// encapsulate the data contained in the Message and write to the output stream
 		
 		if (true)
@@ -53,6 +63,17 @@ public class MessageConnection {
 		
 		// TODO - START
 		// read a segment from the input stream and decapsulate data into a Message
+		
+							// Skrevet selv start!!	
+		try {
+			data = new byte[MessageUtils.SEGMENTSIZE]; //oppretter et nytt segment med plass til meldingen
+			inStream.readFully(data); //mottar meldingen og fyller data-variabelen / segmentet med den
+			message = MessageUtils.decapsulate(data); //hetner ut payload'en via metoden "decapsulate". 
+		} catch (IOException e) {
+			System.out.println("Receive: " + e.getMessage());
+			e.printStackTrace();
+		}
+							// Skrevet selv slutt!!
 		
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
