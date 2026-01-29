@@ -68,7 +68,7 @@ public class MessageConnection {
 		try {
 			data = new byte[MessageUtils.SEGMENTSIZE]; //oppretter et nytt segment med plass til meldingen
 			inStream.readFully(data); //mottar meldingen og fyller data-variabelen / segmentet med den
-			message = MessageUtils.decapsulate(data); //hetner ut payload'en via metoden "decapsulate". 
+			message = MessageUtils.decapsulate(data); //henter ut payload'en via metoden "decapsulate". 
 		} catch (IOException e) {
 			System.out.println("Receive: " + e.getMessage());
 			e.printStackTrace();
