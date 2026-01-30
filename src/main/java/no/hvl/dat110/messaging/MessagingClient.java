@@ -1,7 +1,9 @@
 package no.hvl.dat110.messaging;
 
 
+import java.io.IOException;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import no.hvl.dat110.TODO;
 
@@ -29,6 +31,17 @@ public class MessagingClient {
 		// TODO - START
 		// connect to messaging server using a TCP socket
 		// create and return a corresponding messaging connection
+				//Skrevet selv start!!!
+		
+		try {
+			clientSocket = new Socket(server, port); // oppretter en TCP forbindelse til ønsket server.
+			connection = new MessageConnection(clientSocket); //gjør forbindelsen mulig å bruke senere. 
+		} catch (IOException e) {
+			System.out.println("Connect: " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+				//Skrevet selv slutt!!
 		
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
