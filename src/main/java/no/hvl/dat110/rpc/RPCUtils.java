@@ -1,6 +1,7 @@
 package no.hvl.dat110.rpc;
 
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import no.hvl.dat110.TODO;
 
@@ -14,10 +15,19 @@ public class RPCUtils {
 		
 		// Encapsulate the rpcid and payload in a byte array according to the RPC message syntax / format
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+				//Skrevet selv start!! 
+		rpcmsg = new byte[1 + payload.length]; 						// definerer "rpcmsg" som en ny byte-array med lengde lik headeren(1) + payload. 
+		rpcmsg[0] = rpcid; 											//setter rpcid (RPC Id) lik "headeren / metoden som skal kalles". 
+		System.arraycopy(payload, 0, rpcmsg, 1, payload.length);    //kopierer payload'en, fra indeks 0, over i "rpcmsg"(RPC Message) fra indeks 1, 
+																    // med lengde "payload". 
 		
+		  /* if (true)
+			throw new UnsupportedOperationException(TODO.method());
+			*/
+		
+			// Skrevet selv slutt
 		// TODO - END
+		
 		
 		return rpcmsg;
 	}
@@ -29,10 +39,15 @@ public class RPCUtils {
 		// TODO - START
 		
 		// Decapsulate the rpcid and payload in a byte array according to the RPC message syntax
+				//Skrevet selv start
 		
+			payload = new byte[rpcmsg.length - 1];
+			System.arraycopy(rpcmsg, 1, payload, 0, payload.length);
+			//Skrevet selv slutt
+		/*
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 		// TODO - END
 		
 		return payload;
@@ -45,10 +60,15 @@ public class RPCUtils {
 		byte[] encoded = null;
 		
 		// TODO - START 
+			//Skrevet selv start
 		
+		encoded = str.getBytes(StandardCharsets.UTF_8);
+		
+		//Skrevet selv slutt
+		/*
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 		// TODO - END
 		
 		return encoded;
@@ -61,9 +81,16 @@ public class RPCUtils {
 		
 		// TODO - START 
 		
+		//Skrevet selv start
+		
+			decoded = new String(data, StandardCharsets.UTF_8);
+				
+				//Skrevet selv slutt
+		
+		/*
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 		// TODO - END
 		
 		return decoded;
@@ -75,10 +102,17 @@ public class RPCUtils {
 		
 		// TODO - START 
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+			//Skrevet selv start
 				
-		// TODO - END
+			encoded = new byte[0];		
+						
+					//Skrevet selv slutt
+				
+			/*
+			if (true)
+				throw new UnsupportedOperationException(TODO.method());
+			 */
+			// TODO - END
 		
 		return encoded;
 		
@@ -87,10 +121,11 @@ public class RPCUtils {
 	public static void unmarshallVoid(byte[] data) {
 		
 		// TODO
-		
+		return;
+		/*
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 	}
 
 	// convert boolean to a byte array representation
@@ -120,11 +155,14 @@ public class RPCUtils {
 		
 		byte[] encoded = null;
 		
-		// TODO - START 
+		//Skrevet selv start
+		encoded = ByteBuffer.allocate(4).putInt(x).array();
 		
+		//Skrevet selv slutt
+		/*
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 		// TODO - END
 		
 		return encoded;
@@ -136,10 +174,17 @@ public class RPCUtils {
 		int decoded = 0;
 		
 		// TODO - START 
+		//Skrevet selv start
 		
+		decoded = ByteBuffer.wrap(data).getInt();
+		
+		//Skrevet selv slutt
+
+		
+		/*
 		if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 		// TODO - END
 		
 		return decoded;
