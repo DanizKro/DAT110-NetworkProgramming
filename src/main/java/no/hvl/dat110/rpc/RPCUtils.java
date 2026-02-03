@@ -41,8 +41,8 @@ public class RPCUtils {
 		// Decapsulate the rpcid and payload in a byte array according to the RPC message syntax
 				//Skrevet selv start
 		
-			payload = new byte[rpcmsg.length - 1];
-			System.arraycopy(rpcmsg, 1, payload, 0, payload.length);
+			payload = new byte[rpcmsg.length - 1];						// gir byte-arrayen "payload" lengden av rpcmsg minus headeren. (som er payload). 
+			System.arraycopy(rpcmsg, 1, payload, 0, payload.length);	// kopierer det fra indeks: 1 i "rpcmsg" inn i "payload" fra indeks: 0). 
 			//Skrevet selv slutt
 		/*
 		if (true)
@@ -62,7 +62,7 @@ public class RPCUtils {
 		// TODO - START 
 			//Skrevet selv start
 		
-		encoded = str.getBytes(StandardCharsets.UTF_8);
+		encoded = str.getBytes(StandardCharsets.UTF_8); 		//string-parameteren som kommer inn gjøres om til en byte-array. 
 		
 		//Skrevet selv slutt
 		/*
@@ -83,7 +83,7 @@ public class RPCUtils {
 		
 		//Skrevet selv start
 		
-			decoded = new String(data, StandardCharsets.UTF_8);
+			decoded = new String(data, StandardCharsets.UTF_8); //byte-dataen som kommer inn (som parameter) gjøres om til en String. 
 				
 				//Skrevet selv slutt
 		
@@ -104,7 +104,8 @@ public class RPCUtils {
 		
 			//Skrevet selv start
 				
-			encoded = new byte[0];		
+			encoded = new byte[0];			/* Etter et void-kall mottar clienten en tom byte-array i retur, 
+												i RPC må det alltid sendes noe i retur */
 						
 					//Skrevet selv slutt
 				
@@ -131,7 +132,7 @@ public class RPCUtils {
 	// convert boolean to a byte array representation
 	public static byte[] marshallBoolean(boolean b) {
 		
-		byte[] encoded = new byte[1];
+		byte[] encoded = new byte[1]; 		//denne metoen får inn en ...
 				
 		if (b) {
 			encoded[0] = 1;
@@ -146,7 +147,7 @@ public class RPCUtils {
 	// convert byte array to a boolean representation
 	public static boolean unmarshallBoolean(byte[] data) {
 		
-		return (data[0] > 0);
+		return (data[0] > 0);			//Får inn en byte-array (data), returner "True" hvis den IKKE er tom ?
 		
 	}
 
@@ -156,7 +157,7 @@ public class RPCUtils {
 		byte[] encoded = null;
 		
 		//Skrevet selv start
-		encoded = ByteBuffer.allocate(4).putInt(x).array();
+		encoded = ByteBuffer.allocate(4).putInt(x).array(); //
 		
 		//Skrevet selv slutt
 		/*
