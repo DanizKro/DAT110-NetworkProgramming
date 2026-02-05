@@ -104,7 +104,7 @@ public class RPCUtils {
 		
 			//Skrevet selv start
 				
-			encoded = new byte[0];			/* Etter et void-kall mottar clienten en tom byte-array i retur, 
+			encoded = new byte[0];			/* Etter et void-kall mottar klienten en tom byte-array i retur, 
 												i RPC må det alltid sendes noe i retur */
 						
 					//Skrevet selv slutt
@@ -132,7 +132,9 @@ public class RPCUtils {
 	// convert boolean to a byte array representation
 	public static byte[] marshallBoolean(boolean b) {
 		
-		byte[] encoded = new byte[1]; 		//denne metoen får inn en ...
+		byte[] encoded = new byte[1]; 		//denne metoen får inn en boolean (true/false). 
+											// boolean skal sendes som en byte, så vi konverterer boolean
+											// -verdien til 1(true) eller 0(false). 
 				
 		if (b) {
 			encoded[0] = 1;
@@ -147,7 +149,8 @@ public class RPCUtils {
 	// convert byte array to a boolean representation
 	public static boolean unmarshallBoolean(byte[] data) {
 		
-		return (data[0] > 0);			//Får inn en byte-array (data), returner "True" hvis den IKKE er tom ?
+		return (data[0] > 0);			/* Får inn en byte-array (data) med verdien 0 eller 1, 
+										 konverteres til true hvis verdien er 1 og false om verdien er 0. */
 		
 	}
 
@@ -157,7 +160,8 @@ public class RPCUtils {
 		byte[] encoded = null;
 		
 		//Skrevet selv start
-		encoded = ByteBuffer.allocate(4).putInt(x).array(); //
+		encoded = ByteBuffer.allocate(4).putInt(x).array(); 
+		// resulterer i en "encoded" byte-array på 4 bytes som inneholder tallet vårt (som kom inn som parameter). 
 		
 		//Skrevet selv slutt
 		/*
@@ -178,6 +182,7 @@ public class RPCUtils {
 		//Skrevet selv start
 		
 		decoded = ByteBuffer.wrap(data).getInt();
+		//leser byte-arrayen og integer/tallet den inneholder. 
 		
 		//Skrevet selv slutt
 
