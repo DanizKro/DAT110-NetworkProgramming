@@ -49,9 +49,9 @@ public class MessageConnection {
 		
 		// encapsulate the data contained in the Message and write to the output stream
 		
-		if (true)
+		/*if (true)
 			throw new UnsupportedOperationException(TODO.method());
-			
+			*/
 		// TODO - END
 
 	}
@@ -75,9 +75,9 @@ public class MessageConnection {
 		}
 							// Skrevet selv slutt!!
 		
-		if (true)
+		/*if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 		// TODO - END
 		
 		return message;

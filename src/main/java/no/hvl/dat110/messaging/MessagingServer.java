@@ -47,9 +47,9 @@ public class MessagingServer {
 			
 			//Skrevet selv slutt!!!
 		
-		if (true)
+		/*if (true)
 			throw new UnsupportedOperationException(TODO.method());
-		
+		*/
 		// TODO - END
 		
 		return connection;
