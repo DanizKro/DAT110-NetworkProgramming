@@ -59,9 +59,7 @@ public class RPCServer {
 		   replymsg = new Message(replyData);
 		   connection.send(replymsg);
 			
-		   if (true)
-				throw new UnsupportedOperationException(TODO.method());
-		   
+
 		   // TODO - END
 
 			// stop the server if it was stop methods that was called

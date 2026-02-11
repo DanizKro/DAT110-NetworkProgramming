@@ -16,7 +16,6 @@ public class MessageConnection {
 	private Socket socket; // socket for the underlying TCP connection
 	
 	public MessageConnection(Socket socket) {
-
 		try {
 
 			this.socket = socket;
@@ -40,7 +39,8 @@ public class MessageConnection {
 							// Skrevet selv start!!	
 		try {
 			data = MessageUtils.encapsulate(message); //gjør meldingen om til et segment via metoden. 
-			outStream.write(data); //sender pakken
+			outStream.write(data); //Legger data i bufferen
+			outStream.flush();	   //Tømmer bufferen for data og sender alt samlet
 		} catch (IOException e) {
 			System.out.println("Send: " + e.getMessage());
 			e.printStackTrace();
@@ -48,10 +48,6 @@ public class MessageConnection {
 							// Skrevet selv slutt!!	
 		
 		// encapsulate the data contained in the Message and write to the output stream
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-			
 		// TODO - END
 
 	}
@@ -72,12 +68,9 @@ public class MessageConnection {
 		} catch (IOException e) {
 			System.out.println("Receive: " + e.getMessage());
 			e.printStackTrace();
+			return null;
 		}
 							// Skrevet selv slutt!!
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
 		// TODO - END
 		
 		return message;

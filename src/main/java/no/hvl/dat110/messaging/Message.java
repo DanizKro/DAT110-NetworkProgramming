@@ -13,17 +13,12 @@ public class Message {
 		// TODO - START // konstruktør som passer på at pakken ikke er tom eller for lang. 
 		if (data == null) {
 			throw new UnsupportedOperationException(TODO.constructor(
-					"Message data cannot be null"));
+					"Meldingen data kan ikkje være tom"));
 		}
 		if (data.length > 127) {
 			throw new UnsupportedOperationException(TODO.constructor(
-					"Message data cannot be longer than 127 bytes"));
+					"Melding data kan ikkje være lengre enn 127 bytes"));
 		}
-		
-		/*
-		if (true)
-			throw new UnsupportedOperationException(TODO.constructor("Message"));
-			*/
 			
 		this.data = data;
 	}

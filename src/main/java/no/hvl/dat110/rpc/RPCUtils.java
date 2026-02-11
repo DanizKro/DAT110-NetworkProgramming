@@ -6,7 +6,8 @@ import java.util.Arrays;
 import no.hvl.dat110.TODO;
 
 public class RPCUtils {
-	
+
+	//payload er data
 	public static byte[] encapsulate(byte rpcid, byte[] payload) {
 		
 		byte[] rpcmsg = null;
@@ -19,12 +20,7 @@ public class RPCUtils {
 		rpcmsg = new byte[1 + payload.length]; 						// definerer "rpcmsg" som en ny byte-array med lengde lik headeren(1) + payload. 
 		rpcmsg[0] = rpcid; 											//setter rpcid (RPC Id) lik "headeren / metoden som skal kalles". 
 		System.arraycopy(payload, 0, rpcmsg, 1, payload.length);    //kopierer payload'en, fra indeks 0, over i "rpcmsg"(RPC Message) fra indeks 1, 
-																    // med lengde "payload". 
-		
-		  /* if (true)
-			throw new UnsupportedOperationException(TODO.method());
-			*/
-		
+																    // med lengde "payload".
 			// Skrevet selv slutt
 		// TODO - END
 		
@@ -185,12 +181,6 @@ public class RPCUtils {
 		//leser byte-arrayen og integer/tallet den inneholder. 
 		
 		//Skrevet selv slutt
-
-		
-		/*
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		*/
 		// TODO - END
 		
 		return decoded;
